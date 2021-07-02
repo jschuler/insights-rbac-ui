@@ -36,6 +36,11 @@ plugins.push(
 
 module.exports = (env) => {
   env && env.analyze === 'true' && plugins.push(new BundleAnalyzerPlugin());
+  webpackConfig.module.rules.push({
+    test: /\.ya?ml$/,
+    type: 'json', // Required by Webpack v4
+    use: 'yaml-loader',
+  });
 
   return { ...webpackConfig, plugins };
 };

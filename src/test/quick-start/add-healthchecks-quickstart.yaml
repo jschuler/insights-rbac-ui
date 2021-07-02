@@ -1,0 +1,76 @@
+metadata:
+  name: creating-role
+spec:
+  displayName: Creating a user role
+  durationMinutes: 10
+  description: |-
+    This quick start will walk you though creating a new user role.
+  prerequisites: [You have administrator access.]
+  introduction: |-
+    ### This quick start shows you how to create a new user role.
+  tasks:
+    - title: Creating a user role
+      description: |-
+        To create a role:
+
+        1. Expand the [User Access]{{highlight User-Access}} nav group.
+
+        1. Click on the [Roles]{{highlight roles}} nav item.
+        
+        1. Click on the [Create role]{{highlight create-role}} button to launch the creation modal.
+
+        A modal will be launched.
+
+        1. Copy the following into the *Role name* field: `Test user`{{copy}}. 
+
+        1. Copy the following into the *Role description* field:
+
+        ```
+        This is a description for the test user role.
+        This copy field can span multiple lines.
+        ```{{copy}}
+
+        Click the *Next* button to continue on to the next wizard step.
+      review:
+        instructions: |-
+          #### To verify you are viewing the details of your sample application:
+          Is the side panel titled **nodejs-sample**?
+        failedTaskHelp: This task isn’t verified yet. Try the task again.
+      summary:
+        success: You have viewed the details of your sample app!
+        failed: Try the steps again.
+    - title: Verify that there are no health checks
+      description: |-
+        ### To verify that there your sample application has no health checks configured:
+        1. View the information in the **Resources** tab in the side panel.
+      review:
+        instructions: |-
+          #### To verify there are no health checks configured:
+          Do you see an inline alert stating that **nodejs-sample** does not have health checks?
+        failedTaskHelp: This task isn’t verified yet. Try the task again.
+      summary:
+        success: You have verified that there are no existing health checks!
+        failed: Try the steps again.
+    - title: Add health checks to your sample
+      description: |-
+        ### To add health checks to your sample:
+        1. Add health checks to your **nodejs-sample** deployment in one of the following ways: (a) On the side panel, click on the **Actions** menu, where you will see an **Add Health Checks** menu item or (b) Click on the **Add Health Checks** link on the inline notification in the side panel.
+        2. In the Add Health Checks form, click on the **Add Readiness Probe** link.  Leave the default values, and click on the check to add the Readiness Probe.
+        3. Click on the **Add Liveness Probe** link.  Leave the default values, and click on the check to add the Liveness Probe.
+        4. Click on the **Add Startup Probe** link.  Leave the default values, and click on the check to add the Startup Probe.
+        5. Click **Add** when you’re done.
+
+        You will be brought back to the Topology View.
+      review:
+        instructions: |-
+          #### Verify that health checks are now configured:
+          Is the inline notification gone?
+        failedTaskHelp:
+          This task isn’t verified yet. Try the task again, or [read more](https://docs.openshift.com/container-platform/4.6/applications/application-health.html#odc-adding-health-checks)
+          about this topic.
+      summary:
+        success: You have added health checks to your sample app!
+        failed: Try the steps again.
+  conclusion: Your sample application now has health checks. To ensure that your application
+    is running correctly, take the **Monitor your sample application** quick start.
+  nextQuickStart: [monitor-sampleapp]

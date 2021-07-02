@@ -8,8 +8,6 @@ import StatusLabel from '../../presentational-components/myUserAccess/StatusLabe
 import './MUAHome.scss';
 import MUAContent from './MUAContent';
 
-import useChrome from '@redhat-cloud-services/frontend-components/useChrome';
-
 const MyUserAccess = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -23,9 +21,6 @@ const MyUserAccess = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const dropdownItems = [<DropdownItem key="test">test</DropdownItem>];
-
-  const { toggleQuickStart } = useChrome();
-  const experimentalChrome = localStorage.getItem('experimental:useChrome') === 'true';
 
   return (
     <React.Fragment>
@@ -43,12 +38,6 @@ const MyUserAccess = () => {
           <Text component="p" className="ins-p-myUserAccess--subtitle">
             Select applications to view your personal permissions.
           </Text>
-          {experimentalChrome && (
-            <div>
-              <button onClick={() => toggleQuickStart('explore-serverless')}>Explore serverless</button>
-              <button onClick={() => toggleQuickStart('explore-pipelines')}>Explore pipelines</button>
-            </div>
-          )}
           <div className="ins-p-myUserAccess--dropdown sticky">
             <Dropdown
               ouiaId="mua-bundle-dropdown"

@@ -6,6 +6,7 @@ import useChrome from '@redhat-cloud-services/frontend-components/useChrome';
 
 import { exploreServerlessQuickStart } from './test/quick-start/explore-serverless-quickstart';
 import { explorePipelinesQuickStart } from './test/quick-start/explore-pipeline-quickstart';
+import addHealthchecksQuickstart from './test/quick-start/add-healthchecks-quickstart.yaml';
 
 const Groups = lazy(() => import('./smart-components/group/groups'));
 const Roles = lazy(() => import('./smart-components/role/roles'));
@@ -18,7 +19,7 @@ export const Routes = () => {
   const experimentalChrome = localStorage.getItem('experimental:useChrome') === 'true';
   const chrome = useChrome();
   React.useEffect(() => {
-    experimentalChrome && chrome.setQuickStarts([exploreServerlessQuickStart, explorePipelinesQuickStart]);
+    experimentalChrome && chrome.setQuickStarts([exploreServerlessQuickStart, explorePipelinesQuickStart, addHealthchecksQuickstart]);
   }, []);
   try {
     if (experimentalChrome) {
