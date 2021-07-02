@@ -21,9 +21,9 @@ spec:
 
         A modal will be launched.
 
-        1. Copy the following into the *Role name* field: `Test user`{{copy}}. 
+        1. Copy the following into the **Role name** field: `Test user`{{copy}}. 
 
-        1. Copy the following into the *Role description* field:
+        1. Copy the following into the **Role description** field:
 
         ```
         This is a description for the test user role.
@@ -33,8 +33,8 @@ spec:
         Click the *Next* button to continue on to the next wizard step.
       review:
         instructions: |-
-          #### To verify you are viewing the details of your sample application:
-          Is the side panel titled **nodejs-sample**?
+          #### To verify you are creating a role:
+          Did you see the Create role modal?
         failedTaskHelp: This task isn’t verified yet. Try the task again.
       summary:
         success: You have viewed the details of your sample app!

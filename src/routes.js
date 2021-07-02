@@ -6,7 +6,7 @@ import useChrome from '@redhat-cloud-services/frontend-components/useChrome';
 
 import { exploreServerlessQuickStart } from './test/quick-start/explore-serverless-quickstart';
 import { explorePipelinesQuickStart } from './test/quick-start/explore-pipeline-quickstart';
-import addHealthchecksQuickstart from './test/quick-start/add-healthchecks-quickstart.yaml';
+import addHealthchecksQuickstart from './test/quick-start/create-role.yaml';
 
 const Groups = lazy(() => import('./smart-components/group/groups'));
 const Roles = lazy(() => import('./smart-components/role/roles'));
