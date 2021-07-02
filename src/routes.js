@@ -18,9 +18,6 @@ const ResourcesCatalog = lazy(() => import('./smart-components/ResourcesCatalog'
 export const Routes = () => {
   const experimentalChrome = localStorage.getItem('experimental:useChrome') === 'true';
   const chrome = useChrome();
-  React.useEffect(() => {
-    experimentalChrome && chrome.setQuickStarts([exploreServerlessQuickStart, explorePipelinesQuickStart, addHealthchecksQuickstart]);
-  }, []);
   try {
     if (experimentalChrome) {
       console.group('Experimental API notice');
@@ -33,6 +30,12 @@ export const Routes = () => {
      * Do nothing does not break UI
      */
   }
+
+  React.useEffect(() => {
+    const { quickStarts } = chrome;
+    experimentalChrome && quickStarts.set([exploreServerlessQuickStart, explorePipelinesQuickStart, addHealthchecksQuickstart]);
+  }, []);
+
   return (
     <Suspense fallback={<AppPlaceholder />}>
       <Switch>

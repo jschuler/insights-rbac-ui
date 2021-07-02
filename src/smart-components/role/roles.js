@@ -18,7 +18,7 @@ import ResourceDefinitions from './role-resource-definitions';
 import { syncDefaultPaginationWithUrl, applyPaginationToUrl } from '../../helpers/shared/pagination';
 import { syncDefaultFiltersWithUrl, applyFiltersToUrl } from '../../helpers/shared/filters';
 import useChrome from '@redhat-cloud-services/frontend-components/useChrome';
-import OutlinedQuestionCircle from "@patternfly/react-icons/dist/js/icons/outlined-question-circle-icon";
+import OutlinedQuestionCircle from '@patternfly/react-icons/dist/js/icons/outlined-question-circle-icon';
 import './roles.scss';
 
 const AddRoleWizard = lazy(() => import(/* webpackChunkname: "AddRoleWizard" */ './add-role-new/add-role-wizard'));
@@ -49,7 +49,9 @@ const Roles = () => {
   const [pagination, setPagination] = useState(meta);
   const [filterValue, setFilterValue] = useState(filters.name || '');
 
-  const { toggleQuickStart } = useChrome();
+  const {
+    quickStarts: { toggle },
+  } = useChrome();
 
   useEffect(() => {
     const syncedPagination = syncDefaultPaginationWithUrl(history, pagination);
@@ -120,7 +122,7 @@ const Roles = () => {
               Create role
             </Button>
           </Link>,
-          <Button key="quick-start-create-role" variant="plain" aria-label="Action" onClick={() => toggleQuickStart('creating-role')}>
+          <Button key="quick-start-create-role" variant="plain" aria-label="Action" onClick={() => toggle('creating-role')}>
             <OutlinedQuestionCircle />
           </Button>,
         ]
