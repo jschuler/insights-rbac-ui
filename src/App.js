@@ -50,7 +50,7 @@ class App extends Component {
       <IntlProvider locale="en">
         <React.Fragment>
           <NotificationPortal />
-          <Main style={{ marginLeft: 0, padding: 0 }}>
+          <Main style={{ marginLeft: 0, padding: 0, height: '100%', display: 'flex', flexDirection: 'column' }}>
             <Routes />
           </Main>
         </React.Fragment>
