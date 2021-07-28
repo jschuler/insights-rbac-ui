@@ -15,7 +15,7 @@ spec:
 
         1. Expand the [User Access]{{highlight User-Access}} nav group.
 
-        1. Click on the [Roles]{{highlight roles}} nav item.
+        1. Click on the [Roles]{{highlight settings_rbac_roles}} nav item.
         
         1. Click on the [Create role]{{highlight create-role}} button to launch the creation modal.
 
