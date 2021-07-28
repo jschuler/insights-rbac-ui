@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Routes } from './routes';
-import Main from '@redhat-cloud-services/frontend-components/Main';
 import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal/';
 import { AppPlaceholder } from './presentational-components/shared/loader-placeholders';
 import { IntlProvider } from 'react-intl';
@@ -50,9 +49,7 @@ class App extends Component {
       <IntlProvider locale="en">
         <React.Fragment>
           <NotificationPortal />
-          <Main style={{ marginLeft: 0, padding: 0, height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <Routes />
-          </Main>
+          <Routes />
         </React.Fragment>
       </IntlProvider>
     );
