@@ -13,6 +13,10 @@ const webpackProxy = {
   deployment: process.env.BETA ? 'beta/apps' : 'apps',
   useProxy: true,
   useCloud: true,
+  localChrome: '/Users/jschuler/Code/insights-chrome/build/',
+  routes: {
+    '/beta/config': { host: 'http://localhost:8003' },
+  },
   appUrl: process.env.BETA ? ['/beta/settings/my-user-access', '/beta/settings/rbac'] : ['/settings/my-user-access', '/settings/rbac'],
 };
 
