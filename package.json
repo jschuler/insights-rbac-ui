@@ -154,7 +154,6 @@
     "user-detail": "/users/detail/:username",
     "my-user-access": "/my-user-access",
     "access-requests": "/access-requests",
-    "access-requests-detail": "/access-requests/:requestId",
-    "resources": "/resources"
+    "access-requests-detail": "/access-requests/:requestId"
   }
 }
