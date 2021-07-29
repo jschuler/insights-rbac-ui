@@ -1,8 +1,11 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import React, { lazy, Suspense } from 'react';
-import { AppPlaceholder } from './presentational-components/shared/loader-placeholders';
+import React, { lazy } from 'react';
 import { routes } from '../package.json';
 import useChrome from '@redhat-cloud-services/frontend-components/useChrome';
+
+import { exploreServerlessQuickStart } from './test/quick-start/explore-serverless-quickstart';
+import { explorePipelinesQuickStart } from './test/quick-start/explore-pipeline-quickstart';
+import addHealthchecksQuickstart from './test/quick-start/create-role.yaml';
 
 const Groups = lazy(() => import('./smart-components/group/groups'));
 const Roles = lazy(() => import('./smart-components/role/roles'));
@@ -11,9 +14,10 @@ const MyUserAccess = lazy(() => import('./smart-components/myUserAccess/MUAHome'
 const AccessRequests = lazy(() => import('./smart-components/accessRequests/accessRequests'));
 
 export const Routes = () => {
+  const experimentalChrome = localStorage.getItem('experimental:useChrome') === 'true';
+  const chrome = useChrome();
   try {
-    const chrome = useChrome();
-    if (localStorage.getItem('experimental:useChrome') === 'true') {
+    if (experimentalChrome) {
       console.group('Experimental API notice');
       console.log('Using experimental chrome API "useChrome"');
       console.log('Api value: ', chrome);
@@ -24,18 +28,32 @@ export const Routes = () => {
      * Do nothing does not break UI
      */
   }
+
+  React.useEffect(() => {
+    const { quickStarts } = chrome;
+    experimentalChrome && quickStarts.set([exploreServerlessQuickStart, explorePipelinesQuickStart, addHealthchecksQuickstart]);
+  }, []);
+
   return (
-    <Suspense fallback={<AppPlaceholder />}>
-      <Switch>
-        <Route path={routes.groups} component={Groups} />
-        <Route path={routes.roles} component={Roles} />
-        <Route path={routes.users} component={Users} />
-        <Route path={routes['my-user-access']} component={MyUserAccess} />
-        <Route path={routes['access-requests']} component={AccessRequests} />
-        <Route>
-          <Redirect to={routes.users} />
-        </Route>
-      </Switch>
-    </Suspense>
+    <Switch>
+      <Route path={routes.groups}>
+        <Groups />
+      </Route>
+      <Route path={routes.roles}>
+        <Roles />
+      </Route>
+      <Route path={routes.users}>
+        <Users />
+      </Route>
+      <Route path={routes['my-user-access']}>
+        <MyUserAccess />
+      </Route>
+      <Route path={routes['access-requests']}>
+        <AccessRequests />
+      </Route>
+      <Route>
+        <Redirect to={routes.users} />
+      </Route>
+    </Switch>
   );
 };

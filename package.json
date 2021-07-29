@@ -97,7 +97,8 @@
     "prop-types": "^15.7.2",
     "webpack": "^5.44.0",
     "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "yaml-loader": "^0.6.0"
   },
   "scripts": {
     "build": "NODE_ENV=production webpack --config config/prod.webpack.config.js",

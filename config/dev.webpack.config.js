@@ -13,6 +13,10 @@ const webpackProxy = {
   deployment: process.env.BETA ? 'beta/apps' : 'apps',
   useProxy: true,
   useCloud: true,
+  localChrome: '/Users/jschuler/Code/insights-chrome/build/',
+  routes: {
+    '/beta/config': { host: 'http://localhost:8003' },
+  },
   appUrl: process.env.BETA ? ['/beta/settings/my-user-access', '/beta/settings/rbac'] : ['/settings/my-user-access', '/settings/rbac'],
 };
 
@@ -37,6 +41,11 @@ plugins.push(
 
 module.exports = (env) => {
   env && env.analyze === 'true' && plugins.push(new BundleAnalyzerPlugin());
+  webpackConfig.module.rules.push({
+    test: /\.ya?ml$/,
+    type: 'json', // Required by Webpack v4
+    use: 'yaml-loader',
+  });
 
   return { ...webpackConfig, plugins };
 };
